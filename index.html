@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>AR Tinder Card – Stable Flip</title>
+<title>AR Tinder Card – FINAL FIX</title>
 
 <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
@@ -146,7 +146,6 @@ init(){
   this.busy=false;
   this.flipped=false;
   this.smoothX=0;
-  this.targetX=0;
 
   /* BACK STACK */
   this.peek2=document.createElement("a-image");
@@ -163,6 +162,7 @@ init(){
   this.peek1.setAttribute("opacity","0.55");
   this.el.appendChild(this.peek1);
 
+  /* CARD WRAP */
   this.wrap=document.createElement("a-entity");
   this.wrap.setAttribute("position","0 0.2 0");
   this.el.appendChild(this.wrap);
@@ -172,7 +172,6 @@ init(){
   this.front.setAttribute("width","1");
   this.front.setAttribute("height","1.4");
   this.front.setAttribute("position","0 0 0.01");
-  this.front.setAttribute("visible",true);
   this.wrap.appendChild(this.front);
 
   /* BACK */
@@ -180,8 +179,8 @@ init(){
   this.back.setAttribute("width","1");
   this.back.setAttribute("height","1.4");
   this.back.setAttribute("color","#f3e1e1");
-  this.back.setAttribute("rotation","0 180 0");
-  this.back.setAttribute("visible",false);
+  this.back.setAttribute("position","0 0 -0.01");
+  this.back.setAttribute("visible","false");
   this.wrap.appendChild(this.back);
 
   const c=document.createElement("a-entity");
@@ -216,7 +215,7 @@ init(){
     drag:dx=>this.drag(dx),
     release:()=>this.reset(),
     swipe:d=>this.swipe(d),
-    tap:()=>window.open(LINKS[this.i],"_blank"),
+    tap:()=>!this.flipped && window.open(LINKS[this.i],"_blank"),
     vertical:()=>this.flip()
   });
 
@@ -242,20 +241,18 @@ update(){
 
 drag(dx){
   if(this.busy||this.flipped) return;
-  this.targetX=Math.max(-0.65,Math.min(0.65,dx/220));
-  this.smoothX+=(this.targetX-this.smoothX)*0.15;
-  const rotZ=this.smoothX*-14;
-  const lift=Math.abs(this.smoothX)*0.05;
-  this.wrap.setAttribute("position",`${this.smoothX} ${0.2+lift} 0`);
-  this.wrap.setAttribute("rotation",`0 0 ${rotZ}`);
+  const x=Math.max(-0.65,Math.min(0.65,dx/220));
+  this.smoothX+=(x-this.smoothX)*0.15;
+  this.wrap.setAttribute("position",`${this.smoothX} ${0.2+Math.abs(this.smoothX)*0.05} 0`);
+  this.wrap.setAttribute("rotation",`0 0 ${this.smoothX*-14}`);
 },
 
 reset(){
   if(this.busy) return;
-  this.wrap.setAttribute("animation__resetPos",{
-    property:"position",to:"0 0.2 0",dur:260,easing:"easeOutElastic"
+  this.wrap.setAttribute("animation__reset",{
+    property:"position",to:"0 0.2 0",dur:260,easing:"easeOutCubic"
   });
-  this.wrap.setAttribute("animation__resetRot",{
+  this.wrap.setAttribute("animation__resetR",{
     property:"rotation",to:"0 0 0",dur:220,easing:"easeOutCubic"
   });
 },
@@ -265,18 +262,18 @@ swipe(dir){
   this.busy=true;
   const s=dir==="LEFT"?-1:1;
 
-  this.wrap.setAttribute("animation__swipePos",{
+  this.wrap.setAttribute("animation__swipe",{
     property:"position",to:`${1.8*s} 0.35 -0.3`,dur:320,easing:"easeInCubic"
   });
-  this.wrap.setAttribute("animation__swipeRot",{
+  this.wrap.setAttribute("animation__swipeR",{
     property:"rotation",to:`0 0 ${-45*s}`,dur:320,easing:"easeInCubic"
   });
 
   setTimeout(()=>{
     this.i=(this.i+1)%IMAGES.length;
     this.flipped=false;
-    this.front.setAttribute("visible",true);
-    this.back.setAttribute("visible",false);
+    this.front.setAttribute("visible","true");
+    this.back.setAttribute("visible","false");
     this.wrap.setAttribute("rotation","0 0 0");
     this.wrap.setAttribute("position","0 0.2 0");
     this.update();
@@ -284,44 +281,32 @@ swipe(dir){
   },340);
 },
 
-/* ===== GLITCH-FREE FLIP ===== */
+/* ===== FINAL PERFECT FLIP ===== */
 flip(){
   if(this.busy) return;
   this.busy=true;
-  const to=this.flipped?0:180;
+
+  const showBack=!this.flipped;
+
+  this.front.setAttribute("visible","true");
+  this.back.setAttribute("visible","true");
 
   setTimeout(()=>{
-    this.front.setAttribute("visible",this.flipped);
-    this.back.setAttribute("visible",!this.flipped);
-  },310);
+    this.front.setAttribute("visible",!showBack);
+    this.back.setAttribute("visible",showBack);
+  },300);
 
   this.wrap.setAttribute("animation__flip",{
     property:"rotation",
-    to:`0 ${to} 0`,
-    dur:620,
-    easing:"easeInOutQuart"
-  });
-
-  this.wrap.setAttribute("animation__flipDepth",{
-    property:"position",
-    to:"0 0.2 -0.08",
-    dur:300,
-    dir:"alternate",
-    easing:"easeOutCubic"
-  });
-
-  this.wrap.setAttribute("animation__flipScale",{
-    property:"scale",
-    to:"1.04 1.04 1.04",
-    dur:300,
-    dir:"alternate",
-    easing:"easeOutCubic"
+    to:`0 ${showBack?180:0} 0`,
+    dur:600,
+    easing:"easeInOutCubic"
   });
 
   setTimeout(()=>{
-    this.flipped=!this.flipped;
+    this.flipped=showBack;
     this.busy=false;
-  },620);
+  },600);
 }
 });
 </script>
