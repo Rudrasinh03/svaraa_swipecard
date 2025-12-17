@@ -3,25 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>AR Tinder Card – FINAL FIX</title>
+<title>AR Diamond Tinder Card - Snappy UX Luxury</title>
 
 <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
 
 <style>
-html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:transparent;
-  touch-action:none;
-}
-#touch{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-}
+html,body{ margin:0; width:100%; height:100%; overflow:hidden; background:transparent; touch-action:none; }
+#touch{ position:fixed; inset:0; z-index:9999; }
 </style>
 </head>
 
@@ -29,76 +18,85 @@ html,body{
 <div id="touch"></div>
 
 <script>
-/* ================= DATA ================= */
-const IMAGES=[
-  "img1.png","img2.png","img3.png",
-  "img4.png","img5.png","img6.png",
-  "img7.png","img8.png"
-];
-
-const LINKS=[
-  "https://example.com/1",
-  "https://example.com/2",
-  "https://example.com/3",
-  "https://example.com/4",
-  "https://example.com/5",
-  "https://example.com/6",
-  "https://example.com/7",
-  "https://example.com/8"
-];
+/* ================= PRODUCT DATA ================= */
+const IMAGES=["img1.png","img2.png","img3.png","img4.png","img5.png","img6.png","img7.png","img8.png"];
+const LINKS=["https://www.svaraa.com/jewellery/nirvana-omkara-lab-grown-diamond-religious-pendant?vid=variant_01KAB6809FF34ZXQKGRFHZ2VMB",
+"https://www.svaraa.com/jewellery/ekdanta-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF42F663S41SS8DMENZ",
+"https://www.svaraa.com/jewellery/nirvana-omkareshwar-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF22Y6HE7VSD4ZFTWF3",
+"https://www.svaraa.com/jewellery/someshwara-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2XJBQSW28SVPXWNV4",
+"https://www.svaraa.com/jewellery/nirvana-sacred-mandala-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2KBRQ4N7Z6MDA0ZBM",
+"https://www.svaraa.com/jewellery/nirvana-rudra-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2Z5BBRWECCE5G5YSR",
+"https://www.svaraa.com/jewellery/vighnaharta-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2VMZTKE5XDNPK2GQY",
+"https://www.svaraa.com/jewellery/nirvana-devine-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB6809FT3KRE67FWYR7RD89"];
 
 const DETAILS=[
 {
-  rating:"4.0",reviews:3,
-  title:"Nirvana Omkara Lab-Grown Diamond Religious Pendant",
-  price:"₹40,460",tax:"(Inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow",diamond:"FG/VVSVS"}
+  rating:"4.0 | 3 REVIEWS",
+  title:"NIRVANA OMKARA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
+  shortTitle:"NIRVANA OMKARA",
+  price:"₹40,548",
+  tax:"(MRP inclusive of all taxes)",
+  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
 },
 {
-  rating:"3.8",reviews:5,
-  title:"Second Product Example",
-  price:"₹55,597",tax:"(Inclusive of all taxes)",
-  specs:{metal:"18KT",color:"White",diamond:"GH/VS1"}
+  rating:"4.0 | 3 REVIEWS",
+  title:"EKDANTA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
+  shortTitle:"EKDANTA",
+  price:"₹47,845",
+  tax:"(MRP inclusive of all taxes)",
+  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
 },
 {
-  rating:"4.5",reviews:9,
-  title:"Third Product Example",
-  price:"₹62,000",tax:"(Inclusive of all taxes)",
-  specs:{metal:"18KT",color:"Rose Gold",diamond:"EF/VS"}
+  rating:"4.0 | 3 REVIEWS",
+  title:"NIRVANA OMKARESHWAR\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
+  shortTitle:"NIRVANA OMKARESHWAR",
+  price:"₹36,993",
+  tax:"(MRP inclusive of all taxes)",
+  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
 },
 {
-  rating:"4.2",reviews:11,
-  title:"Classic Solitaire Pendant",
-  price:"₹48,900",tax:"(Inclusive of all taxes)",
-  specs:{metal:"14KT",color:"White",diamond:"FG/VS"}
+  rating:"4.0 | 3 REVIEWS",
+  title:"SOMESHWARA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
+  shortTitle:"SOMESHWARA",
+  price:"₹49,610",
+  tax:"(MRP inclusive of all taxes)",
+  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
 },
 {
-  rating:"4.6",reviews:18,
-  title:"Minimal Heart Diamond Necklace",
-  price:"₹52,300",tax:"(Inclusive of all taxes)",
-  specs:{metal:"18KT",color:"Rose Gold",diamond:"EF/VVS"}
+  rating:"4.0 | 3 REVIEWS",
+  title:"NIRVANA SACRED MANDALA OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
+  shortTitle:"SACRED MANDALA OM",
+  price:"₹52,510",
+  tax:"(MRP inclusive of all taxes)",
+  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
 },
 {
-  rating:"3.9",reviews:7,
-  title:"Daily Wear Diamond Charm",
-  price:"₹35,750",tax:"(Inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow",diamond:"GH/SI"}
+  rating:"4.0 | 3 REVIEWS",
+  title:"NIRVANA RUDRA OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
+  shortTitle:"RUDRA OM",
+  price:"₹51,406",
+  tax:"(MRP inclusive of all taxes)",
+  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
 },
 {
-  rating:"4.8",reviews:25,
-  title:"Luxury Emerald Cut Pendant",
-  price:"₹74,999",tax:"(Inclusive of all taxes)",
-  specs:{metal:"18KT",color:"White",diamond:"EF/VVS"}
+  rating:"4.0 | 3 REVIEWS",
+  title:"VIGHNAHARTA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
+  shortTitle:"VIGHNAHARTA",
+  price:"₹45,549",
+  tax:"(MRP inclusive of all taxes)",
+  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
 },
 {
-  rating:"4.1",reviews:10,
-  title:"Modern Oval Diamond Necklace",
-  price:"₹59,400",tax:"(Inclusive of all taxes)",
-  specs:{metal:"18KT",color:"Rose Gold",diamond:"FG/VS"}
+  rating:"4.0 | 3 REVIEWS",
+  title:"NIRVANA DEVINE OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
+  shortTitle:"NIRVANA DEVINE OM",
+  price:"₹55,693",
+  tax:"(MRP inclusive of all taxes)",
+  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
 }
 ];
 
-/* ================= SWIPE ================= */
+/* ================= SWIPE LOGIC ================= */
 class Swipe{
   constructor(el,cb){
     this.cb=cb;
@@ -106,108 +104,131 @@ class Swipe{
     el.addEventListener("pointermove",e=>this.move(e));
     el.addEventListener("pointerup",e=>this.end(e));
   }
-  start(e){
-    this.x0=e.clientX;
-    this.y0=e.clientY;
-    this.t0=Date.now();
-    this.active=true;
-  }
-  move(e){
-    if(!this.active) return;
-    const dx=e.clientX-this.x0;
-    if(Math.abs(dx)<3) return;
-    this.cb.drag(dx);
-  }
+  start(e){ this.x0=e.clientX; this.y0=e.clientY; this.t0=Date.now(); this.active=true; }
+  move(e){ if(!this.active) return; const dx=e.clientX-this.x0; if(Math.abs(dx)<3) return; this.cb.drag(dx); }
   end(e){
     if(!this.active) return;
     this.active=false;
-    const dx=e.clientX-this.x0;
-    const dy=e.clientY-this.y0;
-    const dt=Date.now()-this.t0;
-
-    if(Math.abs(dx)<10 && Math.abs(dy)<10 && dt<250){
-      this.cb.tap(); return;
-    }
-    if(Math.abs(dy)>Math.abs(dx) && Math.abs(dy)>80){
-      this.cb.vertical(); return;
-    }
-    if(Math.abs(dx)>80){
-      this.cb.swipe(dx>0?"RIGHT":"LEFT");
-    }else{
-      this.cb.release();
-    }
+    const dx=e.clientX-this.x0; const dy=e.clientY-this.y0; const dt=Date.now()-this.t0;
+    if(Math.abs(dx)<10 && Math.abs(dy)<10 && dt<250){ this.cb.tap(); return; }
+    if(Math.abs(dy)>Math.abs(dx) && Math.abs(dy)>80){ this.cb.vertical(); return; }
+    if(Math.abs(dx)>80){ this.cb.swipe(dx>0?"RIGHT":"LEFT"); }else{ this.cb.release(); }
   }
 }
 
-/* ================= CARD ================= */
+/* ================= CARD COMPONENT ================= */
 AFRAME.registerComponent("tinder-stack",{
 init(){
-  this.i=0;
-  this.busy=false;
-  this.flipped=false;
-  this.smoothX=0;
+  this.i=0; this.busy=false; this.flipped=false;
+  this.luxGreen = "#013220"; 
+  this.textWhite = "#ffffff";
 
-  /* BACK STACK */
+  // Stack Peeks
   this.peek2=document.createElement("a-image");
-  this.peek2.setAttribute("width","1");
-  this.peek2.setAttribute("height","1.4");
-  this.peek2.setAttribute("position","0 -0.08 -0.06");
-  this.peek2.setAttribute("opacity","0.35");
+  this.peek2.setAttribute("width","1"); this.peek2.setAttribute("height","1.4");
+  this.peek2.setAttribute("position","0 -0.08 -0.06"); this.peek2.setAttribute("opacity","0.3");
   this.el.appendChild(this.peek2);
 
   this.peek1=document.createElement("a-image");
-  this.peek1.setAttribute("width","1");
-  this.peek1.setAttribute("height","1.4");
-  this.peek1.setAttribute("position","0 -0.04 -0.03");
-  this.peek1.setAttribute("opacity","0.55");
+  this.peek1.setAttribute("width","1"); this.peek1.setAttribute("height","1.4");
+  this.peek1.setAttribute("position","0 -0.04 -0.03"); this.peek1.setAttribute("opacity","0.5");
   this.el.appendChild(this.peek1);
 
-  /* CARD WRAP */
   this.wrap=document.createElement("a-entity");
   this.wrap.setAttribute("position","0 0.2 0");
   this.el.appendChild(this.wrap);
 
-  /* FRONT */
-  this.front=document.createElement("a-image");
-  this.front.setAttribute("width","1");
-  this.front.setAttribute("height","1.4");
-  this.front.setAttribute("position","0 0 0.01");
+  // FRONT SIDE
+  this.front=document.createElement("a-entity");
   this.wrap.appendChild(this.front);
 
-  /* BACK */
+  this.frontImg=document.createElement("a-image");
+  this.frontImg.setAttribute("width","1"); this.frontImg.setAttribute("height","1.4");
+  this.frontImg.setAttribute("material","alphaTest:0.5; side:front;");
+  this.front.appendChild(this.frontImg);
+
+  // UX: Front Info Bar (Changed color to Luxury Green)
+  this.frontInfo = document.createElement("a-plane");
+  this.frontInfo.setAttribute("width", "1"); this.frontInfo.setAttribute("height", "0.25");
+  this.frontInfo.setAttribute("position", "0 -0.575 0.01");
+  // Set to luxGreen with high opacity for a premium look
+  this.frontInfo.setAttribute("material", `color: ${this.luxGreen}; opacity: 0.9; transparent: true;`);
+  this.front.appendChild(this.frontInfo);
+
+  this.fTitle = document.createElement("a-text");
+  this.fTitle.setAttribute("width", "0.85"); this.fTitle.setAttribute("align", "left");
+  this.fTitle.setAttribute("value", ""); this.fTitle.setAttribute("position", "-0.43 -0.52 0.02");
+  this.fTitle.setAttribute("wrap-count", "35");
+  this.front.appendChild(this.fTitle);
+
+  this.fPrice = document.createElement("a-text");
+  this.fPrice.setAttribute("width", "0.85"); this.fPrice.setAttribute("align", "left");
+  this.fPrice.setAttribute("color", "#d4af37"); // Gold Price
+  this.fPrice.setAttribute("value", ""); this.fPrice.setAttribute("position", "-0.43 -0.62 0.02");
+  this.front.appendChild(this.fPrice);
+
+  // BACK SIDE
   this.back=document.createElement("a-plane");
-  this.back.setAttribute("width","1");
-  this.back.setAttribute("height","1.4");
-  this.back.setAttribute("color","#f3e1e1");
+  this.back.setAttribute("width","1"); this.back.setAttribute("height","1.4");
+  this.back.setAttribute("color", this.luxGreen);
   this.back.setAttribute("position","0 0 -0.01");
-  this.back.setAttribute("visible","false");
+  this.back.setAttribute("rotation","0 180 0");
+  this.back.setAttribute("visible",false);
   this.wrap.appendChild(this.back);
 
-  const c=document.createElement("a-entity");
-  c.setAttribute("position","0 0 0.02");
-  this.back.appendChild(c);
+  this.backContainer=document.createElement("a-entity");
+  this.backContainer.setAttribute("position","0 0 0.005");
+  this.backContainer.setAttribute("visible",false);
+  this.back.appendChild(this.backContainer);
 
-  const t=(y,w=0.82,c="#222",fw="400")=>{
+  const t=(y,w=0.9,c="#fff",a="center",v="")=>{
     const e=document.createElement("a-text");
-    e.setAttribute("width",w);
-    e.setAttribute("wrap-count","28");
-    e.setAttribute("align","center");
-    e.setAttribute("font","mozillavr");
-    e.setAttribute("shader","msdf");
-    e.setAttribute("color",c);
-    e.setAttribute("font-weight",fw);
-    e.setAttribute("position",`0 ${y} 0`);
+    e.setAttribute("width",w); e.setAttribute("wrap-count","30");
+    e.setAttribute("align",a); e.setAttribute("color",c); 
+    e.setAttribute("value",v); e.setAttribute("position",`0 ${y} 0.01`);
     return e;
   };
 
-  this.rating=t(0.55,0.8,"#1e665f","600");
-  this.title=t(0.40,0.82,"#222","700");
-  this.price=t(0.22,0.8,"#222","700");
-  this.tax=t(0.14,0.8,"#777");
-  this.specs=t(-0.05,0.8,"#000","600");
-  this.select=t(-0.35,0.8,"#3b0b0b","700");
+  this.rating=t(0.62,0.8,"#d4af37"); 
+  this.title=t(0.46,0.85,this.textWhite);
+  this.price=t(0.30,0.9,this.textWhite); 
+  this.tax=t(0.23,0.7,"#bbb");
 
-  c.append(this.rating,this.title,this.price,this.tax,this.specs,this.select);
+  const createTile = (y, label) => {
+    const border = document.createElement("a-plane");
+    border.setAttribute("width", "0.85"); border.setAttribute("height", "0.1");
+    border.setAttribute("material", "color: #ffffff; side: double; shader: flat;");
+    border.setAttribute("position", `0 ${y} 0.005`);
+
+    const fill = document.createElement("a-plane");
+    fill.setAttribute("width", "0.84"); fill.setAttribute("height", "0.09");
+    fill.setAttribute("color", this.luxGreen);
+    fill.setAttribute("position", `0 ${y} 0.006`);
+
+    this.backContainer.appendChild(border);
+    this.backContainer.appendChild(fill);
+    
+    const labelT = t(y, 0.75, "#ccc", "left", label);
+    labelT.setAttribute("position", `-0.38 ${y} 0.01`);
+    this.backContainer.appendChild(labelT);
+    
+    const valueT = t(y, 0.75, this.textWhite, "right");
+    valueT.setAttribute("position", `0.38 ${y} 0.01`);
+    this.backContainer.appendChild(valueT);
+    return valueT;
+  };
+
+  this.vMetal = createTile(0.04, "METAL");
+  this.vColor = createTile(-0.07, "COLOR");
+  this.vDiamond = createTile(-0.18, "DIAMOND");
+
+  this.shopBtn=document.createElement("a-plane");
+  this.shopBtn.setAttribute("width","0.85"); this.shopBtn.setAttribute("height","0.18");
+  this.shopBtn.setAttribute("color", this.textWhite); 
+  this.shopBtn.setAttribute("position","0 -0.5 0.01");
+  
+  this.shopTxt=t(-0.5,0.8, this.luxGreen, "center", "CONTINUE TO SHOP");
+  this.backContainer.append(this.rating,this.title,this.price,this.tax,this.shopBtn,this.shopTxt);
 
   this.update();
 
@@ -215,121 +236,89 @@ init(){
     drag:dx=>this.drag(dx),
     release:()=>this.reset(),
     swipe:d=>this.swipe(d),
-    tap:()=>!this.flipped && window.open(LINKS[this.i],"_blank"),
+    tap:()=>window.open(LINKS[this.i%LINKS.length],"_blank"),
     vertical:()=>this.flip()
   });
-
   this.el.setAttribute("visible","false");
 },
 
 update(){
-  const len=IMAGES.length;
-  this.front.setAttribute("src",IMAGES[this.i]);
-  this.peek1.setAttribute("src",IMAGES[(this.i+1)%len]);
-  this.peek2.setAttribute("src",IMAGES[(this.i+2)%len]);
+  const d = DETAILS[this.i % DETAILS.length];
+  this.frontImg.setAttribute("src", IMAGES[this.i % IMAGES.length]);
+  this.peek1.setAttribute("src", IMAGES[(this.i + 1) % IMAGES.length]);
+  this.peek2.setAttribute("src", IMAGES[(this.i + 2) % IMAGES.length]);
 
-  const d=DETAILS[this.i];
-  this.rating.setAttribute("value",`${d.rating} ★ | ${d.reviews} Reviews`);
-  this.title.setAttribute("value",d.title);
-  this.price.setAttribute("value",d.price);
-  this.tax.setAttribute("value",d.tax);
-  this.specs.setAttribute("value",
-    `Metal: ${d.specs.metal}\nColor: ${d.specs.color}\nDiamond: ${d.specs.diamond}`
-  );
-  this.select.setAttribute("value","Select Your Ideal Design");
+  // Front UX update
+  this.fTitle.setAttribute("value", d.shortTitle);
+  this.fPrice.setAttribute("value", d.price);
+
+  // Back UX update
+  this.rating.setAttribute("value", d.rating);
+  this.title.setAttribute("value", d.title);
+  this.price.setAttribute("value", d.price);
+  this.tax.setAttribute("value", d.tax);
+  this.vMetal.setAttribute("value", d.specs.metal);
+  this.vColor.setAttribute("value", d.specs.color);
+  this.vDiamond.setAttribute("value", d.specs.diamond);
 },
 
 drag(dx){
   if(this.busy||this.flipped) return;
-  const x=Math.max(-0.65,Math.min(0.65,dx/220));
-  this.smoothX+=(x-this.smoothX)*0.15;
-  this.wrap.setAttribute("position",`${this.smoothX} ${0.2+Math.abs(this.smoothX)*0.05} 0`);
-  this.wrap.setAttribute("rotation",`0 0 ${this.smoothX*-14}`);
+  const x=Math.max(-0.6,Math.min(0.6,dx/220));
+  this.wrap.setAttribute("position",`${x} ${0.2+Math.abs(x)*0.05} 0`);
+  this.wrap.setAttribute("rotation",`0 0 ${x*-14}`);
 },
 
 reset(){
-  if(this.busy) return;
-  this.wrap.setAttribute("animation__reset",{
-    property:"position",to:"0 0.2 0",dur:260,easing:"easeOutCubic"
-  });
-  this.wrap.setAttribute("animation__resetR",{
-    property:"rotation",to:"0 0 0",dur:220,easing:"easeOutCubic"
-  });
+  this.wrap.setAttribute("animation","property:position;to:0 0.2 0;dur:150");
+  this.wrap.setAttribute("animation__r","property:rotation;to:0 0 0;dur:150");
 },
 
 swipe(dir){
-  if(this.busy||this.flipped) return;
+  if(this.busy) return;
   this.busy=true;
   const s=dir==="LEFT"?-1:1;
-
-  this.wrap.setAttribute("animation__swipe",{
-    property:"position",to:`${1.8*s} 0.35 -0.3`,dur:320,easing:"easeInCubic"
-  });
-  this.wrap.setAttribute("animation__swipeR",{
-    property:"rotation",to:`0 0 ${-45*s}`,dur:320,easing:"easeInCubic"
-  });
-
+  this.wrap.setAttribute("animation","property:position;to:"+1.8*s+" 0.3 -0.3;dur:200");
   setTimeout(()=>{
-    this.i=(this.i+1)%IMAGES.length;
+    this.i++;
     this.flipped=false;
-    this.front.setAttribute("visible","true");
-    this.back.setAttribute("visible","false");
+    this.front.setAttribute("visible",true);
+    this.back.setAttribute("visible",false);
+    this.backContainer.setAttribute("visible",false);
     this.wrap.setAttribute("rotation","0 0 0");
     this.wrap.setAttribute("position","0 0.2 0");
     this.update();
     this.busy=false;
-  },340);
+  },210);
 },
 
-/* ===== FINAL PERFECT FLIP ===== */
 flip(){
   if(this.busy) return;
   this.busy=true;
-
-  const showBack=!this.flipped;
-
-  this.front.setAttribute("visible","true");
-  this.back.setAttribute("visible","true");
-
+  const open=!this.flipped;
+  this.back.setAttribute("visible",true);
+  setTimeout(()=>{ this.front.setAttribute("visible",!open); this.backContainer.setAttribute("visible",open); },210);
+  this.wrap.setAttribute("animation",`property:rotation;to:0 ${open?180:0} 0;dur:400;easing:easeInOutQuart`);
   setTimeout(()=>{
-    this.front.setAttribute("visible",!showBack);
-    this.back.setAttribute("visible",showBack);
-  },300);
-
-  this.wrap.setAttribute("animation__flip",{
-    property:"rotation",
-    to:`0 ${showBack?180:0} 0`,
-    dur:600,
-    easing:"easeInOutCubic"
-  });
-
-  setTimeout(()=>{
-    this.flipped=showBack;
-    this.busy=false;
-  },600);
+    this.flipped=open; this.busy=false;
+    if(!this.flipped){ this.back.setAttribute("visible",false); this.backContainer.setAttribute("visible",false); }
+  },400);
 }
 });
 </script>
 
-<a-scene
-  mindar-image="imageTargetSrc: targets (1).mind; maxTrack:1; uiLoading:no; uiError:no;"
-  embedded
-  renderer="alpha:true"
-  vr-mode-ui="enabled:false">
-
-<a-camera look-controls="enabled:false"></a-camera>
-
-<a-entity id="target" mindar-image-target="targetIndex:0">
-  <a-entity tinder-stack position="0 0.05 0.12"></a-entity>
-</a-entity>
-
+<a-scene mindar-image="imageTargetSrc: targets (1).mind; maxTrack:1; uiLoading:no; uiError:no;" embedded renderer="alpha:true; antialias:true;" vr-mode-ui="enabled:false">
+  <a-camera look-controls="enabled:false"></a-camera>
+  <a-entity id="target" mindar-image-target="targetIndex:0">
+    <a-entity tinder-stack position="0 0.05 0.12"></a-entity>
+  </a-entity>
 </a-scene>
 
 <script>
-const t=document.getElementById("target");
-const s=document.querySelector("[tinder-stack]");
-t.addEventListener("targetFound",()=>s.setAttribute("visible",true));
-t.addEventListener("targetLost",()=>s.setAttribute("visible",false));
+const target=document.getElementById("target");
+const card=document.querySelector("[tinder-stack]");
+target.addEventListener("targetFound",()=>card.setAttribute("visible",true));
+target.addEventListener("targetLost",()=>card.setAttribute("visible",false));
 </script>
 
 </body>
