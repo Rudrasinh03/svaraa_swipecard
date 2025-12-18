@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>AR Diamond Tinder Card - Snappy UX Luxury</title>
+<title>AR Diamond Tinder Card - Stabilized</title>
 
 <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
@@ -20,80 +20,26 @@ html,body{ margin:0; width:100%; height:100%; overflow:hidden; background:transp
 <script>
 /* ================= PRODUCT DATA ================= */
 const IMAGES=["img1.png","img2.png","img3.png","img4.png","img5.png","img6.png","img7.png","img8.png"];
-const LINKS=["https://www.svaraa.com/jewellery/nirvana-omkara-lab-grown-diamond-religious-pendant?vid=variant_01KAB6809FF34ZXQKGRFHZ2VMB",
-"https://www.svaraa.com/jewellery/ekdanta-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF42F663S41SS8DMENZ",
-"https://www.svaraa.com/jewellery/nirvana-omkareshwar-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF22Y6HE7VSD4ZFTWF3",
-"https://www.svaraa.com/jewellery/someshwara-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2XJBQSW28SVPXWNV4",
-"https://www.svaraa.com/jewellery/nirvana-sacred-mandala-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2KBRQ4N7Z6MDA0ZBM",
-"https://www.svaraa.com/jewellery/nirvana-rudra-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2Z5BBRWECCE5G5YSR",
-"https://www.svaraa.com/jewellery/vighnaharta-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2VMZTKE5XDNPK2GQY",
-"https://www.svaraa.com/jewellery/nirvana-devine-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB6809FT3KRE67FWYR7RD89"];
+const LINKS=[
+  "https://www.svaraa.com/jewellery/nirvana-omkara-lab-grown-diamond-religious-pendant?vid=variant_01KAB6809FF34ZXQKGRFHZ2VMB",
+  "https://www.svaraa.com/jewellery/ekdanta-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF42F663S41SS8DMENZ",
+  "https://www.svaraa.com/jewellery/nirvana-omkare-shwar-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF22Y6HE7VSD4ZFTWF3",
+  "https://www.svaraa.com/jewellery/someshwara-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2XJBQSW28SVPXWNV4",
+  "https://www.svaraa.com/jewellery/nirvana-sacred-mandala-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2KBRQ4N7Z6MDA0ZBM",
+  "https://www.svaraa.com/jewellery/nirvana-rudra-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2Z5BBRWECCE5G5YSR",
+  "https://www.svaraa.com/jewellery/vighnaharta-lab-grown-diamond-religious-pendant?vid=variant_01KAB5XKF2VMZTKE5XDNPK2GQY",
+  "https://www.svaraa.com/jewellery/nirvana-devine-om-lab-grown-diamond-religious-pendant?vid=variant_01KAB6809FT3KRE67FWYR7RD89"
+];
 
 const DETAILS=[
-{
-  rating:"4.0 | 3 REVIEWS",
-  title:"NIRVANA OMKARA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
-  shortTitle:"NIRVANA OMKARA",
-  price:"₹40,548",
-  tax:"(MRP inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
-},
-{
-  rating:"4.0 | 3 REVIEWS",
-  title:"EKDANTA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
-  shortTitle:"EKDANTA",
-  price:"₹47,845",
-  tax:"(MRP inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
-},
-{
-  rating:"4.0 | 3 REVIEWS",
-  title:"NIRVANA OMKARESHWAR\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
-  shortTitle:"NIRVANA OMKARESHWAR",
-  price:"₹36,993",
-  tax:"(MRP inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
-},
-{
-  rating:"4.0 | 3 REVIEWS",
-  title:"SOMESHWARA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
-  shortTitle:"SOMESHWARA",
-  price:"₹49,610",
-  tax:"(MRP inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
-},
-{
-  rating:"4.0 | 3 REVIEWS",
-  title:"NIRVANA SACRED MANDALA OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
-  shortTitle:"SACRED MANDALA OM",
-  price:"₹52,510",
-  tax:"(MRP inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
-},
-{
-  rating:"4.0 | 3 REVIEWS",
-  title:"NIRVANA RUDRA OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
-  shortTitle:"RUDRA OM",
-  price:"₹51,406",
-  tax:"(MRP inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
-},
-{
-  rating:"4.0 | 3 REVIEWS",
-  title:"VIGHNAHARTA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
-  shortTitle:"VIGHNAHARTA",
-  price:"₹45,549",
-  tax:"(MRP inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
-},
-{
-  rating:"4.0 | 3 REVIEWS",
-  title:"NIRVANA DEVINE OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT",
-  shortTitle:"NIRVANA DEVINE OM",
-  price:"₹55,693",
-  tax:"(MRP inclusive of all taxes)",
-  specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"}
-}
+  { rating:"4.0 | 3 REVIEWS", title:"NIRVANA OMKARA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT", shortTitle:"NIRVANA OMKARA", price:"₹40,548", tax:"(MRP inclusive of all taxes)", specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"} },
+  { rating:"4.0 | 3 REVIEWS", title:"EKDANTA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT", shortTitle:"EKDANTA", price:"₹47,845", tax:"(MRP inclusive of all taxes)", specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"} },
+  { rating:"4.0 | 3 REVIEWS", title:"NIRVANA OMKARESHWAR\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT", shortTitle:"NIRVANA OMKARESHWAR", price:"₹36,993", tax:"(MRP inclusive of all taxes)", specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"} },
+  { rating:"4.0 | 3 REVIEWS", title:"SOMESHWARA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT", shortTitle:"SOMESHWARA", price:"₹49,610", tax:"(MRP inclusive of all taxes)", specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"} },
+  { rating:"4.0 | 3 REVIEWS", title:"NIRVANA SACRED MANDALA OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT", shortTitle:"SACRED MANDALA OM", price:"₹52,510", tax:"(MRP inclusive of all taxes)", specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"} },
+  { rating:"4.0 | 3 REVIEWS", title:"NIRVANA RUDRA OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT", shortTitle:"RUDRA OM", price:"₹51,406", tax:"(MRP inclusive of all taxes)", specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"} },
+  { rating:"4.0 | 3 REVIEWS", title:"VIGHNAHARTA\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT", shortTitle:"VIGHNAHARTA", price:"₹45,549", tax:"(MRP inclusive of all taxes)", specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"} },
+  { rating:"4.0 | 3 REVIEWS", title:"NIRVANA DEVINE OM\nLAB-GROWN DIAMOND RELIGIOUS\nPENDANT", shortTitle:"NIRVANA DEVINE OM", price:"₹55,693", tax:"(MRP inclusive of all taxes)", specs:{metal:"14KT",color:"Yellow Gold",diamond:"FG / VVSVS"} }
 ];
 
 /* ================= SWIPE LOGIC ================= */
@@ -147,11 +93,9 @@ init(){
   this.frontImg.setAttribute("material","alphaTest:0.5; side:front;");
   this.front.appendChild(this.frontImg);
 
-  // UX: Front Info Bar (Changed color to Luxury Green)
   this.frontInfo = document.createElement("a-plane");
   this.frontInfo.setAttribute("width", "1"); this.frontInfo.setAttribute("height", "0.25");
   this.frontInfo.setAttribute("position", "0 -0.575 0.01");
-  // Set to luxGreen with high opacity for a premium look
   this.frontInfo.setAttribute("material", `color: ${this.luxGreen}; opacity: 0.9; transparent: true;`);
   this.front.appendChild(this.frontInfo);
 
@@ -163,7 +107,7 @@ init(){
 
   this.fPrice = document.createElement("a-text");
   this.fPrice.setAttribute("width", "0.85"); this.fPrice.setAttribute("align", "left");
-  this.fPrice.setAttribute("color", "#d4af37"); // Gold Price
+  this.fPrice.setAttribute("color", "#d4af37"); 
   this.fPrice.setAttribute("value", ""); this.fPrice.setAttribute("position", "-0.43 -0.62 0.02");
   this.front.appendChild(this.fPrice);
 
@@ -248,11 +192,9 @@ update(){
   this.peek1.setAttribute("src", IMAGES[(this.i + 1) % IMAGES.length]);
   this.peek2.setAttribute("src", IMAGES[(this.i + 2) % IMAGES.length]);
 
-  // Front UX update
   this.fTitle.setAttribute("value", d.shortTitle);
   this.fPrice.setAttribute("value", d.price);
 
-  // Back UX update
   this.rating.setAttribute("value", d.rating);
   this.title.setAttribute("value", d.title);
   this.price.setAttribute("value", d.price);
@@ -270,15 +212,16 @@ drag(dx){
 },
 
 reset(){
-  this.wrap.setAttribute("animation","property:position;to:0 0.2 0;dur:150");
-  this.wrap.setAttribute("animation__r","property:rotation;to:0 0 0;dur:150");
+  this.wrap.setAttribute("animation","property:position;to:0 0.2 0;dur:150;easing:easeOutCubic");
+  this.wrap.setAttribute("animation__r","property:rotation;to:0 0 0;dur:150;easing:easeOutCubic");
 },
 
 swipe(dir){
   if(this.busy) return;
   this.busy=true;
   const s=dir==="LEFT"?-1:1;
-  this.wrap.setAttribute("animation","property:position;to:"+1.8*s+" 0.3 -0.3;dur:200");
+  this.wrap.setAttribute("animation","property:position;to:"+1.8*s+" 0.3 -0.3;dur:250;easing:easeInCubic");
+  
   setTimeout(()=>{
     this.i++;
     this.flipped=false;
@@ -288,8 +231,9 @@ swipe(dir){
     this.wrap.setAttribute("rotation","0 0 0");
     this.wrap.setAttribute("position","0 0.2 0");
     this.update();
-    this.busy=false;
-  },210);
+    // Short lockout to prevent multi-swiping errors
+    setTimeout(() => { this.busy=false; }, 100);
+  },260);
 },
 
 flip(){
@@ -307,7 +251,7 @@ flip(){
 });
 </script>
 
-<a-scene mindar-image="imageTargetSrc: targets (1).mind; maxTrack:1; uiLoading:no; uiError:no;" embedded renderer="alpha:true; antialias:true;" vr-mode-ui="enabled:false">
+<a-scene mindar-image="imageTargetSrc: targets (1).mind; maxTrack:1; uiLoading:no; uiError:no; filterMinCF:0.001; filterBeta:0.01;" embedded renderer="alpha:true; antialias:true; colorManagement: true;" vr-mode-ui="enabled:false">
   <a-camera look-controls="enabled:false"></a-camera>
   <a-entity id="target" mindar-image-target="targetIndex:0">
     <a-entity tinder-stack position="0 0.05 0.12"></a-entity>
@@ -317,8 +261,19 @@ flip(){
 <script>
 const target=document.getElementById("target");
 const card=document.querySelector("[tinder-stack]");
-target.addEventListener("targetFound",()=>card.setAttribute("visible",true));
-target.addEventListener("targetLost",()=>card.setAttribute("visible",false));
+let hideTimeout;
+
+target.addEventListener("targetFound",()=>{
+  clearTimeout(hideTimeout);
+  card.setAttribute("visible",true);
+});
+
+target.addEventListener("targetLost",()=>{
+  // Keep card visible for 1 second after tracking lost to prevent flickering
+  hideTimeout = setTimeout(() => {
+    card.setAttribute("visible",false);
+  }, 1000);
+});
 </script>
 
 </body>
