@@ -225,13 +225,17 @@ swipe(dir){
   setTimeout(()=>{
     this.i++;
     this.flipped=false;
+    
+    // HARD RESET FOR NEXT CARD
     this.front.setAttribute("visible",true);
     this.back.setAttribute("visible",false);
     this.backContainer.setAttribute("visible",false);
+    
+    this.wrap.removeAttribute("animation"); 
     this.wrap.setAttribute("rotation","0 0 0");
     this.wrap.setAttribute("position","0 0.2 0");
+    
     this.update();
-    // Short lockout to prevent multi-swiping errors
     setTimeout(() => { this.busy=false; }, 100);
   },260);
 },
@@ -240,12 +244,20 @@ flip(){
   if(this.busy) return;
   this.busy=true;
   const open=!this.flipped;
-  this.back.setAttribute("visible",true);
-  setTimeout(()=>{ this.front.setAttribute("visible",!open); this.backContainer.setAttribute("visible",open); },210);
+
+  // Show the green background plane before we start turning
+  if(open) this.back.setAttribute("visible",true);
+
   this.wrap.setAttribute("animation",`property:rotation;to:0 ${open?180:0} 0;dur:400;easing:easeInOutQuart`);
+  
   setTimeout(()=>{
-    this.flipped=open; this.busy=false;
-    if(!this.flipped){ this.back.setAttribute("visible",false); this.backContainer.setAttribute("visible",false); }
+    this.flipped=open;
+    // CRITICAL: Ensure image is hidden when details are visible
+    this.front.setAttribute("visible",!open); 
+    this.backContainer.setAttribute("visible",open);
+    
+    if(!open) this.back.setAttribute("visible",false);
+    this.busy=false;
   },400);
 }
 });
@@ -269,7 +281,6 @@ target.addEventListener("targetFound",()=>{
 });
 
 target.addEventListener("targetLost",()=>{
-  // Keep card visible for 1 second after tracking lost to prevent flickering
   hideTimeout = setTimeout(() => {
     card.setAttribute("visible",false);
   }, 1000);
